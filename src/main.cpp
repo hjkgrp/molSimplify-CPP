@@ -36,9 +36,10 @@ int main()
     cout << "###############################\n" << endl;
     double xyz[]={0.0,0.0,0.0};
     double xyz2[]={0.5,0.5,0.0};
-    double *d = new double[3];
+    double *d;
     atom3D at = atom3D("Cr",xyz);
     atom3D at2 = atom3D("Cr",xyz2);
-    at.distancev(d,at2);
-    cout << d[0] << endl ; 
+    d = at.distancev(at2);
+    cout << d[0] << endl; 
+    delete[] d;
 }

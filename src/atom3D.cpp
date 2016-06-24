@@ -67,10 +67,12 @@ double atom3D::y(){
 double atom3D::z(){
     return xyz[2];
 }
-void atom3D::coords(double* nxyz){
+double* atom3D::coords(){
+    double *nxyz=new double[3];
     nxyz[0] = xyz[0];
     nxyz[1] = xyz[1];
     nxyz[2] = xyz[2];
+    return nxyz;
 }
 string atom3D::symbol(){
     return sym;
@@ -93,20 +95,23 @@ void atom3D::setcoords(double* sxyz){
 /****************************/
 // return distance with other atom
 double atom3D::distance(atom3D at2){
-    double* xyz2=new double[3];
-    at2.coords(xyz2);
+    double* xyz2;
+    xyz2 = at2.coords();
     double dx = xyz[0]-xyz2[0];
     double dy = xyz[1]-xyz2[1];
     double dz = xyz[2]-xyz2[2];
     return sqrt(dx*dx+dy*dy+dz*dz);
 }
 // return distance vector
-void atom3D::distancev(double* dxyz, atom3D at2){
-    double* xyz2=new double[3];
-    at2.coords(xyz2);
+double* atom3D::distancev(atom3D at2){
+    double* dxyz=new double[3];
+    double* xyz2;
+    xyz2 = at2.coords();
     dxyz[0] = xyz[0]-xyz2[0];
     dxyz[1] = xyz[1]-xyz2[1];
     dxyz[2] = xyz[2]-xyz2[2];
+    delete[] xyz2;
+    return dxyz;
 }
 // translate by dxyz
 void atom3D::translate(double* dxyz){

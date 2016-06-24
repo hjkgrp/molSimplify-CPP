@@ -32,9 +32,9 @@ public:
     double x();
     double y();
     double z();
-    void coords(double*);
+    double* coords();
     double distance(atom3D);
-    void distancev(double*,atom3D);
+    double* distancev(atom3D);
     bool ismetal();
     void setcoords(double*);
     string symbol();
